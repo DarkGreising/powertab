@@ -1,6 +1,6 @@
 @{
 	## Module Info
-	ModuleVersion      = '0.99.6.0'
+	ModuleVersion      = '1.0.0'
 	Description        = 'PowerTab Module'
 	GUID               = '64c85865-df87-4bd6-bccd-ea294dc335b3'
 
