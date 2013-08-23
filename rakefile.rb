@@ -5,13 +5,19 @@ version = (File.read "VERSION").chomp
 
 CLOBBER.include "pkg"
 
-task :default
+task :default => [:build]
 
-directory "pkg"
+desc "compile all of the module output"
+output :build do |out|
+  out.from "."
+  out.to "pkg"
+  out.dir "lib", :as => "PowerTab"
+end
 
 desc "package the current module for release"
-zip :package => [:clobber, "pkg"] do |zip|
-  zip.directories_to_zip = ["lib"]
+zip :package => [:clobber, :build] do |zip|
+  zip.directories_to_zip = ["pkg/PowerTab"]
+  zip.flatten_zip
   zip.output_file = "PowerTab-#{version}.zip"
   zip.output_path = "pkg"
 end
